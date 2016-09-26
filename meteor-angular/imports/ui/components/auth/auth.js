@@ -1,5 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import uiRouter from 'angular-ui-router';
+import ngMaterial from 'angular-material';
 
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
@@ -13,10 +15,12 @@ import { name as Password } from '../password/password';
 const name = 'auth';
 
 class Auth {
-  constructor($scope, $reactive) {
+  constructor($scope, $reactive, $state) {
     'ngInject';
 
     $reactive(this).attach($scope);
+
+    this.$state = $state;
 
     this.helpers({
       isLoggedIn() {
@@ -30,12 +34,15 @@ class Auth {
 
   logout() {
     Accounts.logout();
+    this.$state.go('abouts');
   }
 }
 
 // create a module
 export default angular.module(name, [
   angularMeteor,
+  uiRouter,
+  ngMaterial,
   Login,
   Register,
   DisplayNameFilter,

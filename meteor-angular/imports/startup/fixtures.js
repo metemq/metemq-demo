@@ -22,7 +22,7 @@ Meteor.startup(() => {
           _id: 'aaaa',
           state: 'peding',
           result: [],
-          thingsId: 't01',
+          thingId: 't01',
           userId: 'u01'
       }]
 

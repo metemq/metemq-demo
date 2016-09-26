@@ -28,7 +28,7 @@ class Register {
         if (err) {
           this.error = err;
         } else {
-          this.$state.go('parties');
+          this.$state.go('things');
         }
       })
     );

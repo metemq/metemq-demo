@@ -1,0 +1,16 @@
+<md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2"
+        md-row-height="2:1.5"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+
+    <md-grid-tile ng-repeat="thing in thingsList.things">
+        <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ thing._id }}</span>
+                </md-card-title-text>
+            </md-card-title>
+
+        </md-card>
+    </md-grid-tile>
+
+</md-grid-list>

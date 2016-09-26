@@ -13,7 +13,6 @@
     "angular-simple-logger": "^0.1.7",
     "angular-ui-router": "^0.2.18",
     "meteor-node-stubs": "~0.2.0",
-    "mosca": "^2.1.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

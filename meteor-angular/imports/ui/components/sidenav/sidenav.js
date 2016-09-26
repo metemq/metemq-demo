@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
+import { ThingsInbox } from '../../../api/thingsInbox';
 import ngMaterial from 'angular-material';
 
 import template from './sidenav.html';
@@ -9,7 +10,9 @@ import template from './sidenav.html';
 class Sidenav {
     constructor($scope, $timeout, $mdSidenav, $log) {
         'ngInject';
-        
+
+        Meteor.subscribe('thingsInbox');
+
         $scope.isLogIn = function() {
             if (Meteor.userId() == null) {
                 return true;

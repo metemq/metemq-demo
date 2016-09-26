@@ -7,7 +7,6 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './login.html';
 
-import { name as Sidenav } from '../sidenav/sidenav';
 import { name as Register } from '../register/register';
 
 class Login {
@@ -45,8 +44,7 @@ const name = 'login';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  ngMaterial,
-  Sidenav
+  ngMaterial
 ])
   .component(name, {
     template,

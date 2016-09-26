@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Things } from '../api/things/index';
+import { Things } from '../api/things/collection';
 
 Meteor.startup(() => {
   if (Things.find().count() === 0) {

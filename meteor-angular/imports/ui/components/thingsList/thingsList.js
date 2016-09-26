@@ -4,8 +4,8 @@ import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
-import { Things } from '../../../api/things'
-import { ThingsInbox } from '../../../api/thingsInbox';
+import { Things } from 'meteor/metemq:metemq'
+import { ThingsInbox } from 'meteor/metemq:metemq';
 
 import template from './thingsList.html';
 
@@ -15,8 +15,8 @@ class ThingsList {
 
         $reactive(this).attach($scope);
 
-        this.subscribe('things');
-        this.subscribe('thingsInbox');
+        Meteor.subscribe('things');
+        Meteor.subscribe('things.inbox');
 
         this.helpers({
             things() {

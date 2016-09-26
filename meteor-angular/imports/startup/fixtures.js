@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Things } from '../api/things/collection';
-import { ThingsInbox } from '../api/thingsInbox/collection';
+import { Things } from 'meteor/metemq:metemq';
+import { ThingsInbox } from 'meteor/metemq:metemq';
 
 Meteor.startup(() => {
   if (Things.find().count() === 0) {
@@ -11,6 +11,8 @@ Meteor.startup(() => {
     }, {
       _id: 't03'
     }];
+
+    console.log(Things.find().count());
 
     things.forEach((thing) => {
       Things.insert(thing);

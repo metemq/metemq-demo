@@ -12,8 +12,6 @@ Meteor.startup(() => {
       _id: 't03'
     }];
 
-    console.log(Things.find().count());
-
     things.forEach((thing) => {
       Things.insert(thing);
     });
@@ -22,6 +20,7 @@ Meteor.startup(() => {
   if (ThingsInbox.find().count() === 0) {
       const thingsInbox = [{
           _id: 'aaaa',
+          action: 'on',
           state: 'peding',
           result: [],
           thingId: 't01',

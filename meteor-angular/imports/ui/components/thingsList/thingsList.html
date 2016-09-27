@@ -5,30 +5,32 @@
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-xs')"
         md-whiteframe="4"
-        md-show="true">
+        md-hide="false">
 
         <md-subheader class="md-primary">Actions log</md-subheader>
         <md-content layout-paddiing>
             <p ng-repeat="inbox in thingsList.inbox">{{ inbox.thingId }}</p>
         </md-content>
     </md-sidenav>
-    <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2"
-            md-row-height="2:1.5"
-            md-gutter="12px" md-gutter-gt-sm="8px" >
+    <div>
+        <md-grid-list md-cols-xs="1" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="2"
+                md-row-height="2:1.5"
+                md-gutter="12px" md-gutter-gt-sm="8px" >
 
-        <md-grid-tile ng-repeat="thing in thingsList.things">
-            <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">{{ thing._id }}</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <div class="column">
-                    </div>
-                </md-card-content>
-            </md-card>
-        </md-grid-tile>
+            <md-grid-tile ng-repeat="thing in thingsList.things">
+                <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{ thing._id }}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div class="column">
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </md-grid-tile>
 
-    </md-grid-list>
+        </md-grid-list>
+    </div>
 </div>

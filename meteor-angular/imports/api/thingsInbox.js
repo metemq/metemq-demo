@@ -2,7 +2,7 @@ import { ThingsInbox } from 'meteor/metemq:metemq';
 import { Meteor } from 'meteor/meteor';
 
 if (Meteor.isServer) {
-    Meteor.publish('thingsInbox', function() {
+    Meteor.publish('things.inbox', function() {
         return ThingsInbox.find();
     });
 }

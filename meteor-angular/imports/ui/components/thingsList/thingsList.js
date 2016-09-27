@@ -10,7 +10,7 @@ import { ThingsInbox } from 'meteor/metemq:metemq';
 import template from './thingsList.html';
 
 class ThingsList {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, $mdSidenav) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -26,6 +26,10 @@ class ThingsList {
                 return ThingsInbox.find();
             }
         });
+
+        $scope.click = function() {
+            $mdSidenav('left').toggle();
+        }
     }
 };
 

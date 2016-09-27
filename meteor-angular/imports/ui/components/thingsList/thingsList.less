@@ -8,15 +8,19 @@ things-list {
         display: flex;
 
         md-sidenav {
-            height: 100%;
+            height: auto;
 
             div {
                 height: auto;
-                background-image: none;
             }
         }
-        md-grid-list {
+        div {
             width: 100%;
+            overflow: auto;
+
+            md-grid-list {
+                width: 100%;
+            }
         }
     }
 }

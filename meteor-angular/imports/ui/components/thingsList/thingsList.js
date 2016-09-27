@@ -3,9 +3,10 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
+import { name as Action } from '../action/action';
+
 import { Meteor } from 'meteor/meteor';
 import { Things } from 'meteor/metemq:metemq'
-import { ThingsInbox } from 'meteor/metemq:metemq';
 
 import template from './thingsList.html';
 
@@ -16,20 +17,12 @@ class ThingsList {
         $reactive(this).attach($scope);
 
         Meteor.subscribe('things');
-        Meteor.subscribe('things.inbox');
 
         this.helpers({
             things() {
                 return Things.find();
-            },
-            inbox() {
-                return ThingsInbox.find();
             }
         });
-
-        $scope.click = function() {
-            $mdSidenav('left').toggle();
-        }
     }
 };
 
@@ -38,7 +31,8 @@ const name = "thingsList";
 export default angular.module(name, [
     angularMeteor,
     ngMaterial,
-    uiRouter
+    uiRouter,
+    Action
 ]).component(name, {
   template,
   controllerAs: name,

@@ -1,0 +1,6 @@
+<md-list ng-cloak>
+    <md-list-item ng-repeat="inbox in action.inbox">
+        <p>{{ inbox.userId + ') ' + inbox.thingId + ',   act:' + inbox.action }}</p>
+        <md-button ng-disabled="disabled" class="md-secondary" ng-click="stateChange(inbox._id, inbox.state)">{{ inbox.state }}</md-button>
+    </md-list-item>
+</md-list>

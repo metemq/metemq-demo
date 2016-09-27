@@ -17,15 +17,14 @@ Meteor.startup(() => {
     });
   }
 
-  if (ThingsInbox.find().count() === 0) {
+  if (ThingsInbox.find().count() !== 0) {
       const thingsInbox = [{
-          _id: 'aaaa',
           action: 'on',
-          state: 'peding',
+          state: 'pending',
           result: [],
           thingId: 't01',
           userId: 'u01'
-      }]
+      }];
 
       thingsInbox.forEach((inbox) => {
           ThingsInbox.insert(inbox);

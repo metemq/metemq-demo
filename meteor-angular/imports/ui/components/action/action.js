@@ -40,9 +40,18 @@ class Action {
             }
         }
 
+        $scope.isOpen = false;
         $scope.isDisabled = true;
 
         $scope.disabled = false;
+
+        let iconData = [{
+            name:"icon-settings",
+            color:"#A00",
+            theme:"md-warn md-hue-5"
+        }]
+
+        $scope.fonts = [].concat(iconData);
     }
 };
 

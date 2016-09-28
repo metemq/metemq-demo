@@ -3,8 +3,13 @@
         <div layout="column" class="md-list-item-text">
             <p>{{ 'thing ID: ' + inbox.thingId }}</p>
             <p>{{ 'Action: ' + inbox.action }}</p>
+            <p>{{ 'State: ' + inbox.state }}</p>
         </div>
-        <md-button ng-disabled="disabled" class="md-secondary" ng-click="stateChange(inbox._id, inbox.state)">{{ inbox.state }}</md-button>
+        <div class="check">
+            <p>Check</p>
+            <md-checkbox>
+            </md-checkbox>
+        </div>
         <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
 </md-list>

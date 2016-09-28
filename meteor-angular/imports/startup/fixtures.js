@@ -17,13 +17,28 @@ Meteor.startup(() => {
     });
   }
 
-  if (ThingsInbox.find().count() !== 0) {
+  if (ThingsInbox.find().count() === 0) {
       const thingsInbox = [{
           action: 'on',
           state: 'pending',
           result: [],
           thingId: 't01',
-          userId: 'u01'
+          userId: 'u01',
+          checked: false
+      }, {
+          action: 'on',
+          state: 'applied',
+          result: [],
+          thingId: 't02',
+          userId: 'u01',
+          checked: false
+      }, {
+          action: 'off',
+          state: 'pending',
+          result: [],
+          thingId: 't03',
+          userId: 'u01',
+          checked: false
       }];
 
       thingsInbox.forEach((inbox) => {

@@ -1,6 +1,10 @@
 <md-list ng-cloak>
-    <md-list-item ng-repeat="inbox in action.inbox">
-        <p>{{ inbox.userId + ') ' + inbox.thingId + ',   act:' + inbox.action }}</p>
+    <md-list-item class="md-2-line" ng-repeat="inbox in action.inbox">
+        <div layout="column" class="md-list-item-text">
+            <p>{{ 'thing ID: ' + inbox.thingId }}</p>
+            <p>{{ 'Action: ' + inbox.action }}</p>
+        </div>
         <md-button ng-disabled="disabled" class="md-secondary" ng-click="stateChange(inbox._id, inbox.state)">{{ inbox.state }}</md-button>
+        <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
 </md-list>

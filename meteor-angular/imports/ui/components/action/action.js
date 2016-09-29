@@ -9,7 +9,7 @@ import { Meteor } from 'meteor/meteor';
 import template from './action.html';
 
 class Action {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, ) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -24,34 +24,15 @@ class Action {
             }
         });
 
-        $scope.change = function(state) {
-            console.log(state);
-
-            if(state === 'applied') {
-                $scope.disabled = false;
-            } else {
-                $scope.disabled = true;
+        $scope.$watch('state', function(newVal, oldVal) {
+            if (newVal==="done") {
+                
             }
+        })
+
+        $scope.click = function(state) {
+            console.log($scope.state);
         }
-
-        $scope.stateChange = function(id, state) {
-            if (state === 'applied') {
-                ThingsInbox.update({ _id: id }, { $set: { state: 'done' } });
-            }
-        }
-
-        $scope.isOpen = false;
-        $scope.isDisabled = true;
-
-        $scope.disabled = false;
-
-        let iconData = [{
-            name:"icon-settings",
-            color:"#A00",
-            theme:"md-warn md-hue-5"
-        }]
-
-        $scope.fonts = [].concat(iconData);
     }
 };
 
@@ -64,4 +45,9 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: Action
-})
+}).config(config);
+
+
+function config($mdThemingProvider) {
+    'ngInject';
+}

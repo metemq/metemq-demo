@@ -1,14 +1,16 @@
 <md-list ng-cloak>
-    <md-list-item class="md-2-line" ng-repeat="inbox in action.inbox">
-        <div layout="column" class="md-list-item-text">
-            <p>{{ 'thing ID: ' + inbox.thingId }}</p>
-            <p>{{ 'Action: ' + inbox.action }}</p>
-            <p>{{ 'State: ' + inbox.state }}</p>
-        </div>
-        <div class="check">
-            <p>Check</p>
-            <md-checkbox>
-            </md-checkbox>
+    <md-list-item class="md-2-line" ng-repeat="inbox in action.inbox" md-ink-ripple="grey">
+        <div class="list-item">
+            <div layout="column" class="md-list-item-text">
+                <p>{{ 'ID: ' + inbox.thingId }}</p>
+                <p>{{ 'Action: ' + inbox.action }}</p>
+            </div>
+            <div layout="column">
+                <div class="md-list-item-text">
+                    <p style="padding-right: 10px">{{ "State: " }}</p><p ng-bind="inbox.state"></p>
+                </div>
+                <md-progress-linear ng-if="inbox.state=='pending'" md-mode="query"></md-progress-linear>
+            </div>
         </div>
         <md-divider ng-if="!$last"></md-divider>
     </md-list-item>

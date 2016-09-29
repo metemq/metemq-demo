@@ -34,7 +34,7 @@ Meteor.startup(() => {
           checked: false
       }, {
           action: 'off',
-          state: 'pending',
+          state: 'done',
           result: [],
           thingId: 't03',
           userId: 'u01',

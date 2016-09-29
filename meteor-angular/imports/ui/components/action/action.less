@@ -1,27 +1,34 @@
 action {
     width: 100%;
-    overflow: auto;
+
+    md-list {
+        padding: 0;
+    }
 
     md-list-item {
         display: flex !important;
 
-        p {
-            padding-left: 10px;
-        }
-
-        .check {
-            justify-content: flex-end;
-
-            md-checkbox {
-                margin: 0;
-            }
+        .list-item {
+            z-index: 20;
         }
 
         div {
-            overflow-y: scroll;
-            position: absolute;
             width: 100%;
-            height: 100%;
+            margin: auto;
+            transition: all linear 0.5s;
+
+            div {
+                position: relative;
+                width: 50%;
+                height: 100%;
+
+                margin: auto;
+
+                div {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
     }
 }

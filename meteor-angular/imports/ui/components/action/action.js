@@ -9,7 +9,7 @@ import { Meteor } from 'meteor/meteor';
 import template from './action.html';
 
 class Action {
-    constructor($scope, $reactive, ) {
+    constructor($scope, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -24,14 +24,10 @@ class Action {
             }
         });
 
-        $scope.$watch('state', function(newVal, oldVal) {
-            if (newVal==="done") {
-                
-            }
-        })
-
-        $scope.click = function(state) {
-            console.log($scope.state);
+        $scope.click = function(id) {
+            ThingsInbox.update({ _id: id }, { $set: {
+                checked: true
+            }});
         }
     }
 };

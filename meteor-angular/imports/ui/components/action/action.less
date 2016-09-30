@@ -3,25 +3,34 @@ action {
 
     md-list {
         padding: 0;
+        transition: all linear 1s;
     }
 
     md-list-item {
         display: flex !important;
 
-        .list-item {
+        .md-button {
+            width: 100%;
+            height: 100%;
+            padding: 14px 10px 14px 10px;
+            margin: 0;
             z-index: 20;
+            text-transform: none;
+        }
+
+        p {
+            display: flex;
+            justify-content: flex-start;
         }
 
         div {
             width: 100%;
             margin: auto;
-            transition: all linear 0.5s;
 
             div {
                 position: relative;
                 width: 50%;
                 height: 100%;
-
                 margin: auto;
 
                 div {

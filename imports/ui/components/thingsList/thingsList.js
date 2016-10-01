@@ -33,24 +33,24 @@ class ThingsList {
             $scope.data[id] = {};
             $scope.data[id].fields = Object.keys(thing);
 
-            if ($scope.data[id].fields[2] === 'led') {
-                $scope.switch[id] = true;
+            $scope.data[id].fields.forEach(function(value) {
+                if (value === 'led') {
+                    $scope.switch[id] = thing.led;
 
-                Things.find({ _id: id }).observe({
-                    changed: function(newDoc, oldDoc) {
-                        $scope.switch[id] = newDoc.led;
-                    }
-                })
+                    Things.find({ _id: id }).observe({
+                        changed: function(newDoc, oldDoc) {
+                            $scope.switch[id] = newDoc.led;
+                        }
+                    });
 
-                $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
-                    let set = newDoc;
+                    $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
+                        let set = newDoc;
 
-                    Things.update({ _id: id }, { $set: { led: set }});
-                })
-            }
-
+                        Things.update({ _id: id }, { $set: { led: set }});
+                    })
+                }
+            })
         }
-
     }
 };
 

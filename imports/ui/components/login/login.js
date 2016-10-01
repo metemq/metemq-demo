@@ -42,16 +42,14 @@ const name = 'login';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor,
-  uiRouter,
-  ngMaterial
-])
-  .component(name, {
+    angularMeteor,
+    uiRouter,
+    ngMaterial
+]).component(name, {
     template,
     controllerAs: name,
     controller: Login
-  })
-  .config(config);
+}).config(config);
 
 function config($stateProvider) {
   'ngInject';

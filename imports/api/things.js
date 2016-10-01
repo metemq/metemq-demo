@@ -5,4 +5,10 @@ if (Meteor.isServer) {
     Meteor.publish('things', function() {
         return Things.find();
     });
+
+    Things.allow({
+        update: function() {
+            return true;
+        }
+    })
 }

@@ -28,6 +28,6 @@ tmeasday:publish-counts
 check@1.2.3
 email@1.1.17
 less@2.7.5
-planettraining:material-design-icons
 shell-server
 metemq:metemq
+planettraining:material-design-icons

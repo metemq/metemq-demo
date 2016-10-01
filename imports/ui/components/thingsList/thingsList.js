@@ -11,12 +11,13 @@ import { Things } from 'meteor/metemq:metemq'
 import template from './thingsList.html';
 
 class ThingsList {
-    constructor($scope, $reactive) {
+    constructor($scope, $element, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         $scope.data = {};
+        $scope.switch = {};
 
         Meteor.subscribe('things');
 
@@ -29,15 +30,27 @@ class ThingsList {
         $scope.init = function(id) {
             let thing = Things.findOne({ _id: id });
 
-            // Things.find({ _id: id }).observe({
-            //     changed: function(newDoc, oldDoc) {
-            //         thing.act('setLed', newDoc);
-            //     }
-            // })
+            $scope.data[id] = {};
+            $scope.data[id].fields = Object.keys(thing);
 
-            $scope.data[thing._id] = {};
-            $scope.data[thing._id].fields = Object.keys(thing);
+            if ($scope.data[id].fields[2] === 'led') {
+                $scope.switch[id] = true;
+
+                Things.find({ _id: id }).observe({
+                    changed: function(newDoc, oldDoc) {
+                        $scope.switch[id] = newDoc.led;
+                    }
+                })
+
+                $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
+                    let set = newDoc;
+
+                    Things.update({ _id: id }, { $set: { led: set }});
+                })
+            }
+
         }
+
     }
 };
 
@@ -54,7 +67,23 @@ export default angular.module(name, [
     controller: ThingsList
 })
   .config(config)
-  .run(run);
+  .run(run)
+  .animation('.cards', function() {
+      return {
+          leave: function (element, done) {
+              element.css('opacity', 1);
+              jQuery(element).animate({
+                opacity: 0
+              }, done);
+          },
+          enter: function(element, done) {
+              element.css('opacity',0);
+              jQuery(element).animate({
+                opacity: 1
+              }, done);
+          }
+      }
+  });
 
 function config($stateProvider, $mdThemingProvider) {
   'ngInject';

@@ -41,21 +41,21 @@
       </div>
 
       <div layout="row" layout-fill layout-margin layout-padding layout-wrap>
-        <md-button class="md-raised">
-          <md-icon md-svg-icon="social:ic_google_24px" style="color: #DC4A38;"></md-icon>
-          <span>
-            Google</span>
-        </md-button>
-        <md-button class="md-raised">
-          <md-icon md-svg-icon="social:ic_facebook_24px" style="color: #3F62B4;"></md-icon>
-          <span>Facebook
-          </span>
-        </md-button>
-        <md-button class="md-raised">
-          <md-icon md-svg-icon="social:ic_twitter_24px" style="color: #27AAE2;"></md-icon>
-          <span>Twitter
-          </span>
-        </md-button>
+          <md-button class="md-raised social-button">
+            <img src="img/google.png" />
+            <span>
+              Google</span>
+          </md-button>
+          <md-button class="md-raised social-button">
+            <img src="img/facebook.png" />
+            <span>Facebook
+            </span>
+          </md-button>
+          <md-button class="md-raised social-button">
+            <img src="img/twitter.png" />
+            <span>Twitter
+            </span>
+          </md-button>
       </div>
       <md-toolbar ng-show="register.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
         <p class="md-body-1">{{ register.error }}</p>

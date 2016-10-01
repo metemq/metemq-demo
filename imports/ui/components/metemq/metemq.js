@@ -1,6 +1,5 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
 import template from './metemq.html'
@@ -15,8 +14,6 @@ class Metemq {
 
         $('.body').css('height', $( window ).height() - $('#navi').height() + 'px');
 
-        console.log('aaa');
-
         $( window ).resize(function() {
             $('.body').css('height', $( window ).height() - $('#navi').height() + 'px');
         })
@@ -27,7 +24,6 @@ const name = 'metemq';
 
 export default angular.module(name, [
     angularMeteor,
-    ngMaterial,
     uiRouter,
     Navigation,
     ThingsList,
@@ -43,26 +39,10 @@ export default angular.module(name, [
   .run(run);
 
 
-function config($mdIconProvider, $urlRouterProvider) {
+function config($urlRouterProvider) {
     'ngInject';
 
-    const iconPath =  '/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/';
-
-    $mdIconProvider
-      .iconSet('social',
-        iconPath + 'svg-sprite-social.svg')
-      .iconSet('action',
-        iconPath + 'svg-sprite-action.svg')
-      .iconSet('communication',
-        iconPath + 'svg-sprite-communication.svg')
-      .iconSet('content',
-        iconPath + 'svg-sprite-content.svg')
-      .iconSet('toggle',
-        iconPath + 'svg-sprite-toggle.svg')
-      .iconSet('navigation',
-        iconPath + 'svg-sprite-navigation.svg')
-      .iconSet('image',
-        iconPath + 'svg-sprite-image.svg');
+    $urlRouterProvider.otherwise('/things');
 }
 function run($rootScope, $state) {
   'ngInject';

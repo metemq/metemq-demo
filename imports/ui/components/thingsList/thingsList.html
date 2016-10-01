@@ -12,9 +12,9 @@
             <action></action>
         </md-content>
     </md-sidenav>
-    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center start">
+    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="start start">
         <div flex-md flex-gt-sm="50" flex-gt-xs="100" class="containers">
-            <md-card ng-repeat="thing in thingsList.things" ng-if="$even" ng-init="init(thing._id)" md-theme="dark-blue">
+            <md-card class="cards" ng-repeat="thing in thingsList.things" ng-if="$even" ng-init="init(thing._id)" md-theme="dark-blue">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
@@ -28,14 +28,14 @@
                     <div class="field-container">
                         <h3 class="field">{{ data[thing._id].fields[2] + ': ' + thing[data[thing._id].fields[2]] }}</h3>
                         <div class="switch-container">
-                            <md-switch ng-model="switch[thing._id]" aria-label="Switch 1"></md-switch>
+                            <md-switch ng-if="data[thing._id].fields[2] == 'led'" aria-label="Switch"></md-switch>
                         </div>
                     </div>
                 </md-card-content>
             </md-card>
         </div>
         <div flex-md flex-gt-sm="50" flex-gt-xs="100" class="containers">
-            <md-card ng-repeat="thing in thingsList.things" ng-if="$odd" ng-init="init(thing._id)" md-theme="dark-blue">
+            <md-card class="cards" ng-repeat="thing in thingsList.things" ng-if="$odd" ng-init="init(thing._id)" md-theme="dark-blue">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
@@ -49,7 +49,7 @@
                     <div class="field-container">
                         <h3 class="field">{{ data[thing._id].fields[2] + ': ' + thing[data[thing._id].fields[2]] }}</h3>
                         <div class="switch-container" layout-align="end center">
-                            <md-switch ng-model="switch[thing._id]" aria-label="Switch 1"></md-switch>
+                            <md-switch ng-if="data[thing._id].fields[2] == 'led'" ng-model="switch[thing._id]" aria-label="Switch"></md-switch>
                         </div>
                     </div>
                 </md-card-content>

@@ -5,6 +5,8 @@ import uiRouter from 'angular-ui-router';
 
 import template from './abouts.html';
 
+import { Meteor } from 'meteor/meteor';
+
 class Abouts {};
 
 const name = "abouts";
@@ -17,7 +19,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: Abouts
-}).config(config);
+}).config(config)
+  .run(run);
 
 function config($stateProvider) {
     'ngInject';
@@ -26,4 +29,11 @@ function config($stateProvider) {
       url: '/abouts',
       template: '<abouts></abouts>'
     });
+}
+function run($state) {
+    'ngInject';
+    
+    if (Meteor.userId() !== null) {
+        $state.go('things');
+    }
 }

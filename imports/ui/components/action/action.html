@@ -1,6 +1,6 @@
 <md-list ng-cloak>
     <md-list-item class="md-2-line" ng-repeat="inbox in action.inbox">
-        <md-button ng-click="click(inbox._id)" ng-disabled="inbox.state!=='done'" >
+        <md-button ng-click="click(inbox._id)" ng-disabled="inbox.state!=='done'">
             <div class="list-item">
                 <div layout="column" class="md-list-item-text">
                     <p>{{ 'ID: ' + inbox.thingId }}</p>

@@ -9,7 +9,11 @@ import { name as ThingsList } from '../thingsList/thingsList';
 import { name as Abouts } from '../abouts/abouts';
 import { name as Auth } from '../auth/auth';
 
-class Metemq {}
+class Metemq {
+    constructor() {
+        $('.body').css('height', $( window ).height() - 64 + 'px');
+    }
+}
 
 const name = 'metemq';
 

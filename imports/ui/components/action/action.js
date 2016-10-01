@@ -19,7 +19,9 @@ class Action {
         this.helpers({
             inbox() {
                 return ThingsInbox.find({
-                    checked: false
+                    checked: {
+                        $not: true
+                    }
                 });
             }
         });

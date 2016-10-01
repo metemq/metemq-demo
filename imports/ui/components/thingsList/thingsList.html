@@ -1,4 +1,4 @@
-<div>
+<div class="content">
     <md-sidenav
         id="sidenav"
         class="md-sidenav-left"
@@ -8,29 +8,52 @@
         md-hide="false">
 
         <md-subheader class="md-primary action-header">Actions log</md-subheader>
-        <md-content layout-paddiing class="scrollable">
-            <action class="scrollable-content"></action>
+        <md-content layout-paddiing>
+            <action></action>
         </md-content>
     </md-sidenav>
-    <div class="scrollable">
-        <md-grid-list md-cols-xs="1" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="2"
-                md-row-height="2:1.5"
-                md-gutter="12px" md-gutter-gt-sm="8px" class="scrollabel-content" >
-
-            <md-grid-tile ng-repeat="thing in thingsList.things">
-                <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{ thing._id }}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <div class="column">
+    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center start">
+        <div flex-md flex-gt-sm="50" flex-gt-xs="100" class="containers">
+            <md-card ng-repeat="thing in thingsList.things" ng-if="$even" ng-init="init(thing._id)" md-theme="dark-blue">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
+                        <span class="md-subhead">{{ 'Hardware: ' + thing.hw }}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media1"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-content>
+                    <div class="field-container">
+                        <h3 class="field">{{ data[thing._id].fields[2] + ': ' + thing[data[thing._id].fields[2]] }}</h3>
+                        <div class="switch-container">
+                            <md-switch ng-model="switch[thing._id]" aria-label="Switch 1"></md-switch>
                         </div>
-                    </md-card-content>
-                </md-card>
-            </md-grid-tile>
-
-        </md-grid-list>
-    </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+        <div flex-md flex-gt-sm="50" flex-gt-xs="100" class="containers">
+            <md-card ng-repeat="thing in thingsList.things" ng-if="$odd" ng-init="init(thing._id)" md-theme="dark-blue">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
+                        <span class="md-subhead">{{ 'Hardware: ' + thing.hw }}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media2"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-content>
+                    <div class="field-container">
+                        <h3 class="field">{{ data[thing._id].fields[2] + ': ' + thing[data[thing._id].fields[2]] }}</h3>
+                        <div class="switch-container" layout-align="end center">
+                            <md-switch ng-model="switch[thing._id]" aria-label="Switch 1"></md-switch>
+                        </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
 </div>

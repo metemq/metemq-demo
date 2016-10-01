@@ -18,18 +18,18 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
-                        <span class="md-subhead">{{ 'Hardware: ' + thing.hw }}</span>
+                        <span class="md-subhead">{{ 'Hardware: ' + hw[thing._id] }}</span>
                     </md-card-title-text>
                     <md-card-title-media>
-                        <div class="md-media-lg card-media1"></div>
+                        <div ng-class="hw[thing._id]" class="md-media-lg"></div>
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
                     <div>
-                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 1">
+                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0">
                             <h3 class="field">{{ n + ': ' + thing[n] }}</h3>
                             <div class="switch-container" layout-align="end center">
-                                <md-switch ng-if="n == 'led'"  ng-model="switch[thing._id]" aria-label="n"></md-switch>
+                                <md-switch md-theme="docs-dark" class="md-primary" ng-if="n == 'led'"  ng-model="switch[thing._id]" aria-label="n"></md-switch>
                             </div>
                         </div>
                     </div>
@@ -41,18 +41,18 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ 'Thing ID: ' +  thing._id }}</span>
-                        <span class="md-subhead">{{ 'Hardware: ' + thing.hw }}</span>
+                        <span class="md-subhead">{{ 'Hardware: ' + hw[thing._id] }}</span>
                     </md-card-title-text>
                     <md-card-title-media>
-                        <div class="md-media-lg card-media2"></div>
+                        <div ng-class="hw[thing._id]" class="md-media-lg"></div>
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
                     <div>
-                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 1">
+                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0">
                             <h3 class="field">{{ n + ': ' + thing[n] }}</h3>
                             <div class="switch-container" layout-align="end center">
-                                <md-switch ng-if="n == 'led'" ng-model="switch[thing._id]" aria-label="n"></md-switch>
+                                <md-switch md-theme="docs-dark" class="md-primary"  ng-if="n == 'led'" ng-model="switch[thing._id]" aria-label="n"></md-switch>
                             </div>
                         </div>
                     </div>

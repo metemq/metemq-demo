@@ -18,6 +18,7 @@ class ThingsList {
 
         $scope.data = {};
         $scope.switch = {};
+        $scope.hw = {};
 
         Meteor.subscribe('things');
 
@@ -29,6 +30,12 @@ class ThingsList {
 
         $scope.init = function(id) {
             let thing = Things.findOne({ _id: id });
+
+            if (id[0] === 'e') {
+                $scope.hw[id] = 'edison';
+            } else {
+                $scope.hw[id] = 'nodeMCU';
+            }
 
             $scope.data[id] = {};
             $scope.data[id].fields = Object.keys(thing);
@@ -93,6 +100,7 @@ function config($stateProvider, $mdThemingProvider) {
     template: '<things-list></things-list>'
   });
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+  $mdThemingProvider.theme('docs-dark').primaryPalette('amber');
 }
 function run($state) {
     'ngInject';

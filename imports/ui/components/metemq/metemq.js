@@ -11,7 +11,6 @@ import { name as Auth } from '../auth/auth';
 
 class Metemq {
     constructor() {
-        $('.body').css('height', $( window ).height() - 64 + 'px');
     }
 }
 

@@ -10,7 +10,16 @@ import { name as Abouts } from '../abouts/abouts';
 import { name as Auth } from '../auth/auth';
 
 class Metemq {
-    constructor() {
+    constructor($scope) {
+        'ngInject';
+
+        $('.body').css('height', $( window ).height() - $('#navi').height() + 'px');
+
+        console.log('aaa');
+
+        $( window ).resize(function() {
+            $('.body').css('height', $( window ).height() - $('#navi').height() + 'px');
+        })
     }
 }
 

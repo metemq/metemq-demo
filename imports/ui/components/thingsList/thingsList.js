@@ -62,10 +62,14 @@ class ThingsList {
                 if (field === 'led') {
                     $scope.switch[id] = thing.led;
 
+                    Things.find({ _id: id }).observe({
+                        changed: function(newDoc, oldDoc) {
+                            $scope.switch[id] = newDoc.led;
+                        }
+                    })
                     $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
                         let set = newDoc;
 
-                        Things.update({ _id: id }, { $set: { led: set }});
                         Things.findOne({ _id: id }).act('setLed', set);
                     });
                 }

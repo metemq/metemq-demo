@@ -25,7 +25,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
-                    <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0">
+                    <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0 && thing[n] != null">
                         <h3 id="{{ thing._id + '_' + n }}" class="field">{{ n + ': ' + thing[n] }}</h3>
                         <div class="switch-container" layout-align="end center">
                             <md-switch md-theme="docs-dark" class="md-primary" ng-if="n == 'led'"  ng-model="switch[thing._id]" aria-label="n"></md-switch>
@@ -46,7 +46,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
-                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0">
+                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0 && thing[n] != null">
                             <h3 id="{{ thing._id + '_' + n }}" class="field">{{ n + ': ' + thing[n] }}</h3>
                             <div class="switch-container" layout-align="end center">
                                 <md-switch md-theme="docs-dark" class="md-primary"  ng-if="n == 'led'" ng-model="switch[thing._id]" aria-label="n"></md-switch>

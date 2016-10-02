@@ -8,7 +8,7 @@ import { Source, Things } from 'meteor/metemq:metemq'
 let source = new Source();
 
 source.methods({
-    toogleLed: function() {
-        Things.findOne({ _id: 'n01' }).act('toogleLed');
+    toggleLed: function() {
+        Things.findOne({ _id: 'n01' }).act('toggleLed');
     }
 });

@@ -3,6 +3,12 @@ import '../imports/api/users';
 import '../imports/api/things';
 import '../imports/api/thingsInbox';
 
-import { Source } from 'meteor/metemq:metemq'
+import { Source, Things } from 'meteor/metemq:metemq'
 
-new Source();
+let source = new Source();
+
+source.methods({
+    toogleLed: function() {
+        Things.findOne({ _id: 'n01' }).act('toogleLed');
+    }
+});

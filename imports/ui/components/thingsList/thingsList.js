@@ -40,13 +40,9 @@ class ThingsList {
             $scope.data[id] = {};
             $scope.data[id].fields = Object.keys(thing);
 
-            console.log($scope.data[id].fields);
-
             $scope.data[id].fields.forEach(function(field) {
                 Things.find({ _id: id }).observe({
                     changed: function(newDoc, oldDoc) {
-                        console.log(newDoc);
-
                         if (newDoc[field] !== oldDoc[field]) {
                             let self = $(`#${id + '_' + field}`);
 

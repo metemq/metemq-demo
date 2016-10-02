@@ -40,11 +40,13 @@ class ThingsList {
             $scope.data[id] = {};
             $scope.data[id].fields = Object.keys(thing);
 
-            $scope.data[id].fields.forEach(function(value) {
+            console.log($scope.data[id].fields);
+
+            $scope.data[id].fields.forEach(function(field) {
                 Things.find({ _id: id }).observe({
                     changed: function(newDoc, oldDoc) {
-                        if (newDoc[value] !== oldDoc[value]) {
-                            let self = $(`#${id + '_' + value}`);
+                        if (newDoc[field] !== oldDoc[field]) {
+                            let self = $(`#${id + '_' + field}`);
 
                             self.animate({
                                 opacity: 1
@@ -62,16 +64,10 @@ class ThingsList {
                 if (value === 'led') {
                     $scope.switch[id] = thing.led;
 
-                    Things.find({ _id: id }).observe({
-                        changed: function(newDoc, oldDoc) {
-                            $scope.switch[id] = newDoc.led;
-                        }
-                    });
-
                     $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
                         let set = newDoc;
 
-                        Things.update({ _id: id }, { $set: { led: set }});
+                        Things.find({ _id: id }).act('setLed', set);
                     })
                 }
             })

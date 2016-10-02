@@ -45,6 +45,8 @@ class ThingsList {
             $scope.data[id].fields.forEach(function(field) {
                 Things.find({ _id: id }).observe({
                     changed: function(newDoc, oldDoc) {
+                        console.log(newDoc);
+
                         if (newDoc[field] !== oldDoc[field]) {
                             let self = $(`#${id + '_' + field}`);
 
@@ -59,18 +61,18 @@ class ThingsList {
                             });
                         }
                     }
-                })
+                });
 
-                if (value === 'led') {
+                if (field === 'led') {
                     $scope.switch[id] = thing.led;
 
                     $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
                         let set = newDoc;
 
-                        Things.find({ _id: id }).act('setLed', set);
-                    })
+                        Things.findOne({ _id: id }).act('setLed', set);
+                    });
                 }
-            })
+            });
         }
     }
 };

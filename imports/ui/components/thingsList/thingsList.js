@@ -41,6 +41,24 @@ class ThingsList {
             $scope.data[id].fields = Object.keys(thing);
 
             $scope.data[id].fields.forEach(function(value) {
+                Things.find({ _id: id }).observe({
+                    changed: function(newDoc, oldDoc) {
+                        if (newDoc[value] !== oldDoc[value]) {
+                            let self = $(`#${id + '_' + value}`);
+
+                            self.animate({
+                                opacity: 1
+                            }, 200, 'linear', function() {
+                                self.css('font-size', '1.35em');
+                            }).animate({
+                                opacity: 1
+                            }, 200, 'linear', function() {
+                                self.css('font-size', '1.17em');
+                            });
+                        }
+                    }
+                })
+
                 if (value === 'led') {
                     $scope.switch[id] = thing.led;
 

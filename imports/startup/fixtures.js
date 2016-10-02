@@ -5,16 +5,13 @@ import { ThingsInbox } from 'meteor/metemq:metemq';
 Meteor.startup(() => {
   if (Things.find().count() === 0) {
     const things = [{
-      _id: 't01',
-      hw: 'edison',
+      _id: 'n01',
       temperature: 23
     }, {
-      _id: 't02',
-      hw: 'nodeMCU',
+      _id: 'n02',
       led: 'on'
     }, {
-      _id: 't03',
-      hw: 'edison',
+      _id: 'e03',
       switch: 'on'
     }];
 

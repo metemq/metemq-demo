@@ -49,8 +49,8 @@ export default angular.module(name, [
           leave: function (element, done) {
               element.css('left', 0);
               jQuery(element).animate({
-                top: "-2000px"
-              }, done);
+                left: "-300px"
+            }, 500, 'linear', done);
           },
           enter: function(element, done) {
               element.css('opacity',0);

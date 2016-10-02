@@ -90,23 +90,7 @@ export default angular.module(name, [
     controller: ThingsList
 })
   .config(config)
-  .run(run)
-  .animation('.cards', function() {
-      return {
-          leave: function (element, done) {
-              element.css('opacity', 1);
-              jQuery(element).animate({
-                opacity: 0
-              }, done);
-          },
-          enter: function(element, done) {
-              element.css('opacity',0);
-              jQuery(element).animate({
-                opacity: 1
-              }, done);
-          }
-      }
-  });
+  .run(run);
 
 function config($stateProvider, $mdThemingProvider) {
   'ngInject';

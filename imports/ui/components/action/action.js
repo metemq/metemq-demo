@@ -43,23 +43,7 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: Action
-}).config(config)
-  .animation('.list', function() {
-      return {
-          leave: function (element, done) {
-              element.css('left', 0);
-              jQuery(element).animate({
-                left: "-300px"
-            }, 500, 'linear', done);
-          },
-          enter: function(element, done) {
-              element.css('opacity',0);
-              jQuery(element).animate({
-                opacity: 1
-              }, done);
-          }
-      }
-  });
+}).config(config);
 
 
 function config($mdThemingProvider) {

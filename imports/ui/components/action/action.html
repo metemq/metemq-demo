@@ -10,7 +10,7 @@
                     <div class="md-list-item-text">
                         <p style="padding-right: 10px">{{ "State: " }}</p><p>{{ inbox.state }}</p>
                     </div>
-                    <md-progress-linear ng-if="inbox.state==='pending'" md-mode="query"></md-progress-linear>
+                    <md-progress-linear ng-if="inbox.state==='pending' || inbox.state==='initial'" md-mode="query"></md-progress-linear>
                 </div>
             </div>
         </md-button>

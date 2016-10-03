@@ -16,7 +16,6 @@ class ThingsList {
 
         $reactive(this).attach($scope);
 
-        $scope.data = {};
         $scope.switch = {};
         $scope.hw = {};
 
@@ -37,10 +36,7 @@ class ThingsList {
                 $scope.hw[id] = 'nodeMCU';
             }
 
-            $scope.data[id] = {};
-            $scope.data[id].fields = Object.keys(thing);
-
-            $scope.data[id].fields.forEach(function(field) {
+            Object.keys(thing).forEach(function(field) {
                 Things.find({ _id: id }).observe({
                     changed: function(newDoc, oldDoc) {
                         if (newDoc[field] !== oldDoc[field]) {
@@ -66,7 +62,7 @@ class ThingsList {
                         changed: function(newDoc, oldDoc) {
                             $scope.switch[id] = newDoc.led;
                         }
-                    })
+                    });
                     $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
                         let set = newDoc;
 

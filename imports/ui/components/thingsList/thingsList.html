@@ -1,8 +1,6 @@
 <div class="content">
     <md-sidenav
-        id="sidenav"
         class="md-sidenav-left"
-        md-component-id="left"
         md-is-locked-open="$mdMedia('gt-xs')"
         md-whiteframe="4"
         md-hide="false">
@@ -25,10 +23,10 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
-                    <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0 && thing[n] != null">
-                        <h3 id="{{ thing._id + '_' + n }}" class="field">{{ n + ': ' + thing[n] }}</h3>
-                        <div class="switch-container" layout-align="end center">
-                            <md-switch md-theme="docs-dark" class="md-primary" ng-if="n == 'led'"  ng-model="switch[thing._id]" aria-label="n"></md-switch>
+                    <div class="field-container" ng-repeat="(key, value) in thing" ng-if="key !== '_id' && key !== '_owner'">
+                        <h3 id="{{ thing._id + '_' + key }}" class="field">{{ key + ': ' + value }}</h3>
+                        <div class="switch-container">
+                            <md-switch md-theme="docs-dark" class="md-primary" ng-if="key == 'led'" ng-model="switch[thing._id]" aria-label="key"></md-switch>
                         </div>
                     </div>
                 </md-card-content>
@@ -46,12 +44,12 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-content>
-                        <div class="field-container" ng-repeat="n in data[thing._id].fields" ng-if="$index > 0 && thing[n] != null">
-                            <h3 id="{{ thing._id + '_' + n }}" class="field">{{ n + ': ' + thing[n] }}</h3>
-                            <div class="switch-container" layout-align="end center">
-                                <md-switch md-theme="docs-dark" class="md-primary"  ng-if="n == 'led'" ng-model="switch[thing._id]" aria-label="n"></md-switch>
-                            </div>
+                    <div class="field-container" ng-repeat="(key, value) in thing" ng-if="key !== '_id' && key !== '_owner'">
+                        <h3 id="{{ thing._id + '_' + key }}" class="field">{{ key + ': ' + value }}</h3>
+                        <div class="switch-container">
+                            <md-switch md-theme="docs-dark" class="md-primary" ng-if="key == 'led'" ng-model="switch[thing._id]" aria-label="key"></md-switch>
                         </div>
+                    </div>
                 </md-card-content>
             </md-card>
         </div>

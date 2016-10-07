@@ -11,15 +11,16 @@ import { Things } from 'meteor/metemq:metemq'
 import template from './thingsList.html';
 
 class ThingsList {
-    constructor($scope, $element, $reactive) {
+    constructor($scope, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
-        $scope.switch = {};
         $scope.hw = {};
+        $scope.sub = {};
 
-        Meteor.subscribe('things');
+        $scope.sub.inbox = Meteor.subscribe('thingsInbox');
+        $scope.sub.thing = Meteor.subscribe('things');
 
         this.helpers({
             things() {
@@ -27,18 +28,20 @@ class ThingsList {
             }
         });
 
-        $scope.init = function(id) {
-            let thing = Things.findOne({ _id: id });
+        $scope.switch = function(id, value) {
+            Things.findOne({ _id: id }).act('setLed', !value);
+        }
 
+        $scope.init = function(id) {
             if (id[0] === 'e') {
                 $scope.hw[id] = 'edison';
             } else {
                 $scope.hw[id] = 'nodeMCU';
             }
 
-            Object.keys(thing).forEach(function(field) {
-                Things.find({ _id: id }).observe({
-                    changed: function(newDoc, oldDoc) {
+            Things.find({ _id: id }).observe({
+                changed: function(newDoc, oldDoc) {
+                    Object.keys(newDoc).forEach(function(field) {
                         if (newDoc[field] !== oldDoc[field]) {
                             let self = $(`#${id + '_' + field}`);
 
@@ -52,21 +55,6 @@ class ThingsList {
                                 self.css('font-size', '1.17em');
                             });
                         }
-                    }
-                });
-
-                if (field === 'led') {
-                    $scope.switch[id] = thing.led;
-
-                    Things.find({ _id: id }).observe({
-                        changed: function(newDoc, oldDoc) {
-                            $scope.switch[id] = newDoc.led;
-                        }
-                    });
-                    $scope.$watch(`switch.${id}`, function(newDoc, oldDoc) {
-                        let set = newDoc;
-
-                        Things.findOne({ _id: id }).act('setLed', set);
                     });
                 }
             });

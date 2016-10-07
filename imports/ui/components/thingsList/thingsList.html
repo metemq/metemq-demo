@@ -26,7 +26,13 @@
                     <div class="field-container" ng-repeat="(key, value) in thing" ng-if="key !== '_id' && key !== '_owner'">
                         <h3 id="{{ thing._id + '_' + key }}" class="field">{{ key + ': ' + value }}</h3>
                         <div class="switch-container">
-                            <md-switch md-theme="docs-dark" class="md-primary" ng-if="key == 'led'" ng-model="switch[thing._id]" aria-label="key"></md-switch>
+                            <md-switch class="md-primary"
+                                md-theme="docs-dark"
+                                ng-if="key === 'led'"
+                                ng-model="thing.led"
+                                ng-click="switch(thing._id, thing.led)"
+                                aria-label="key">
+                            </md-switch>
                         </div>
                     </div>
                 </md-card-content>
@@ -47,7 +53,13 @@
                     <div class="field-container" ng-repeat="(key, value) in thing" ng-if="key !== '_id' && key !== '_owner'">
                         <h3 id="{{ thing._id + '_' + key }}" class="field">{{ key + ': ' + value }}</h3>
                         <div class="switch-container">
-                            <md-switch md-theme="docs-dark" class="md-primary" ng-if="key == 'led'" ng-model="switch[thing._id]" aria-label="key"></md-switch>
+                            <md-switch class="md-primary"
+                                md-theme="docs-dark"
+                                ng-if="key === 'led'"
+                                ng-model="thing.led"
+                                ng-click="switch(thing._id, thing.led)"
+                                aria-label="key">
+                            </md-switch>
                         </div>
                     </div>
                 </md-card-content>

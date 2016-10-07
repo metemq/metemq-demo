@@ -4,8 +4,6 @@ import ngMaterial from 'angular-material';
 
 import { ThingsInbox } from 'meteor/metemq:metemq';
 
-import { Meteor } from 'meteor/meteor';
-
 import template from './action.html';
 
 class Action {
@@ -13,8 +11,6 @@ class Action {
         'ngInject';
 
         $reactive(this).attach($scope);
-
-        Meteor.subscribe('thingsInbox');
 
         this.helpers({
             inbox() {
@@ -43,9 +39,4 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     controller: Action
-}).config(config);
-
-
-function config($mdThemingProvider) {
-    'ngInject';
-}
+});

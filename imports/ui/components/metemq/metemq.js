@@ -42,7 +42,7 @@ export default angular.module(name, [
 function config($urlRouterProvider) {
     'ngInject';
 
-    $urlRouterProvider.otherwise('/things');
+    $urlRouterProvider.otherwise('/abouts');
 }
 function run($rootScope, $state) {
   'ngInject';
